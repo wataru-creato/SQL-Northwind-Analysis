@@ -1,3 +1,5 @@
+
+-- 月別売上トップ商品クエリ
 WITH setOrders AS(
 SELECT 
 d.product_id,
