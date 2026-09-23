@@ -5,7 +5,7 @@ o.customer_id,
 FLOOR(sum(d.quantity*d.unit_price)) AS total
 FROM order_details d 
 JOIN  orders o
-ON d.id=o.id
+ON d.order_id=o.id
 GROUP BY o.customer_id 
 )
 
