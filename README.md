@@ -1,5 +1,5 @@
-# SQL-Practice-using-Northwind-
-northwindを使ってSQLを学んでみる
+# SQL学習の一環として、Northwindデータベースを使用した分析クエリを作成
+northwindを使ってSQLを学んでみた。
 
 
 # 概要
