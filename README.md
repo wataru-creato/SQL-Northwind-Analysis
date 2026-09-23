@@ -1,4 +1,4 @@
-# SQL学習の一環として、Northwindデータベースを使用した分析クエリを作成
+# Northwindデータベースを使用したSQL分析クエリを作成
 northwindを使ってSQLを学んでみた。
 
 
