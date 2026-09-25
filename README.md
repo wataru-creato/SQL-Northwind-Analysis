@@ -185,3 +185,58 @@ WHERE Ranked IN (1,2,3)
 - 今回、日付情報では適切な形ではなかったため、DATE_FORMATで適切な形に変換した。
 
 
+## 5.顧客ごとの売り上げからランクを割り当てるクエリ
+
+- 使用した構文：WITH,GROUP BY,LEFT JOIN,SUM,FLOOR,CASE
+- 目的:CASEの条件設定
+
+```SQL
+
+-- 条件ごとに顧客ごとのランクをまとめる
+WITH OrderCustomers AS (SELECT 
+c.id,
+o.id AS orderId,
+c.last_name,
+c.first_name
+FROM customers c
+LEFT JOIN orders o
+ON c.id=o.customer_id
+GROUP BY c.id,orderId),
+
+TotalPurchase AS (SELECT
+oc.id,
+oc.last_name,
+oc.first_name,
+SUM(d.quantity*d.unit_price) AS total
+FROM OrderCustomers oc
+LEFT JOIN order_details d
+ON d.order_id=oc.orderId
+GROUP BY 
+oc.id,
+oc.last_name,
+oc.first_name
+)
+
+SELECT 
+id,
+last_name,
+first_name,
+FLOOR(COALESCE(total, 0))AS total,
+CASE
+ WHEN total>10000 THEN 'プラチナ'
+ WHEN total>=5000 and total<10000 THEN 'ゴールド'
+ WHEN total>=1000 and total<5000 THEN 'シルバー'
+ ELSE 'ブロンズ'
+END AS customerRanked
+FROM TotalPurchase
+
+```
+
+- 結果
+![ima](./sql/img/membersRanked.png)
+
+【メモ】
+- LEFT JOIN を使うことでその値がないものを出力できる。
+- COALESCE(total, 0)を使うことでNULLの値を0に設定することができる。
+- CASEはif文のような役割を持つ、ELSEに入れればそれ以外の条件として使える。
+- 一つずつ組み合わせれば目的のクエリに近づけることを学んだ。
