@@ -238,6 +238,7 @@ CASE
  ELSE 'ブロンズ'
 END AS customerRanked
 FROM TotalPurchase
+ORDER BY total DESC
 
 ```
 
