@@ -47,7 +47,7 @@ ORDER BY total DESC
 
 ```
 
-- 結果
+【結果】
 
 ![image](./sql/img/VIP.png)
 
@@ -92,7 +92,7 @@ WHERE p.RequiredOrderQuantity>0
 
 ```
 
-- 結果
+【結果】
 
 今回は何も表示されませんでした。（データ内には発注点未満の在庫商品がなかったため）
 
@@ -127,7 +127,8 @@ ORDER BY total DESC
 
 ```
 
-- 結果
+【結果】
+  
 ![img](./sql/img/CS.png)
 
 【メモ】
@@ -177,7 +178,8 @@ WHERE Ranked IN (1,2,3)
 
 ```
 
-- 結果
+【結果】
+  
 ![img](./sql/img/MTSP.png)
 
 【メモ】
@@ -232,7 +234,8 @@ FROM TotalPurchase
 
 ```
 
-- 結果
+【結果】
+  
 ![ima](./sql/img/membersRanked.png)
 
 【メモ】
